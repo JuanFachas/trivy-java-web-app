@@ -1,17 +1,29 @@
 pipeline {
   agent any
+
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
+
   stages {
+    stage('Checkout') {
+      steps {
+        // Esto descarga el contenido del repo (incluyendo el Dockerfile)
+        checkout scm
+      }
+    }
+
     stage('Build') {
       steps {
+        // Asegúrate que el Dockerfile esté en la raíz del repo
         sh 'docker build -t darinpope/java-web-app:latest .'
       }
     }
+
     stage('Scan') {
       steps {
-        sh 'trivy darinpope/java-web-app:latest'
+        // Ejecuta el escaneo de Trivy sobre la imagen recién construida
+        sh 'trivy image darinpope/java-web-app:latest'
       }
     }
   }
