@@ -11,8 +11,13 @@ pipeline {
     }
     stage('Scan') {
       steps {
-        sh 'trivy image darinpope/trivy-java-web-app:latest'
+        sh 'trivy image --format table --output resultado.txt darinpope/trivy-java-web-app:latest'
       }
+    }
+  }
+  post {
+    always {
+      archiveArtifacts artifacts: 'resultado.txt', fingerprint: true
     }
   }
 }
