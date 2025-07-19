@@ -16,7 +16,7 @@ RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 #RUN trivy rootfs --no-progress / || true
 
 # Etapa 3: Imagen final con solo lo necesario para ejecutar
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:17-jre-alpine
 VOLUME /tmp
 ARG DEPENDENCY=/workspace/app/target/dependency
 
