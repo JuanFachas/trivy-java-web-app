@@ -14,32 +14,54 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.2.5</version>
+    <version>3.2.5</version> <!-- ✅ Versión reciente y estable -->
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
 
   <properties>
-    <java.version>17</java.version>
+    <java.version>17</java.version> <!-- ✅ Compatible con Spring Boot 3.2.5 -->
   </properties>
 
   <dependencies>
-    <!-- Web -->
+    <!-- 🌐 Web -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
 
-    <!-- Test -->
+    <!-- 🔐 Tomcat actualizado (para evitar CVEs) -->
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-core</artifactId>
+      <version>10.1.24</version>
+    </dependency>
+
+    <!-- ✅ Test -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+      <exclusions>
+        <!-- Evitar conflictos con versiones vulnerables de Mockito -->
+        <exclusion>
+          <groupId>org.mockito</groupId>
+          <artifactId>mockito-core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!-- Mockito actualizado manualmente -->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>5.12.0</version> <!-- ✅ Última versión estable a julio 2025 -->
       <scope>test</scope>
     </dependency>
   </dependencies>
 
   <build>
     <plugins>
-      <!-- Spring Boot Plugin -->
+      <!-- ⚙️ Spring Boot Plugin -->
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
