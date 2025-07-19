@@ -1,26 +1,17 @@
 pipeline {
-  agent any
-
+  agent { label 'linux' }
   options {
     buildDiscarder(logRotator(numToKeepStr: '5'))
   }
-
   stages {
-    stage('Checkout') {
-      steps {
-        checkout scm
-      }
-    }
-
     stage('Build') {
       steps {
         sh 'docker build -t darinpope/java-web-app:latest .'
       }
     }
-
     stage('Scan') {
       steps {
-        sh 'trivy image --db-repository ghcr.io/aquasecurity/trivy-db darinpope/java-web-app:latest'
+        sh 'trivy darinpope/java-web-app:latest'
       }
     }
   }
