@@ -15,7 +15,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.2.5</version>
+    <version>3.2.11</version><!-- sube a última 3.2.x para corregir vulnerabilidades conocidas en Spring WebMVC :contentReference[oaicite:1]{index=1} -->
     <relativePath/>
   </parent>
 
@@ -25,6 +25,7 @@
 
   <dependencyManagement>
     <dependencies>
+      <!-- Tomcat embebido manualmente versión segura -->
       <dependency>
         <groupId>org.apache.tomcat.embed</groupId>
         <artifactId>tomcat-embed-core</artifactId>
@@ -64,7 +65,7 @@
       </exclusions>
     </dependency>
 
-    <!-- Reagregar Tomcat manualmente con versión 10.1.43 -->
+    <!-- Reagrega Tomcat desde dependencyManagement -->
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-core</artifactId>
@@ -76,6 +77,18 @@
     <dependency>
       <groupId>org.apache.tomcat.embed</groupId>
       <artifactId>tomcat-embed-websocket</artifactId>
+    </dependency>
+
+    <!-- Logger: actualizamos Logback al último 1.5.x -->
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-core</artifactId>
+      <version>1.5.18</version><!-- corrige CVE-2024-12798 y otros CVEs :contentReference[oaicite:2]{index=2} -->
+    </dependency>
+    <dependency>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <version>1.5.18</version>
     </dependency>
 
     <!-- Actuator -->
@@ -101,14 +114,6 @@
           <layers enabled="true"/>
         </configuration>
       </plugin>
-
-      <!-- Plugin para verificar versiones actualizadas de dependencias -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>versions-maven-plugin</artifactId>
-        <version>2.16.0</version>
-      </plugin>
     </plugins>
   </build>
-
 </project>
