@@ -11,7 +11,7 @@ pipeline {
     }
     stage('Scan') {
       steps {
-        sh 'trivy darinpope/trivy-java-web-app:latest'
+        sh 'trivy image darinpope/trivy-java-web-app:latest'
       }
     }
   }
