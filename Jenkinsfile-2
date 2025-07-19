@@ -11,9 +11,7 @@ pipeline {
     }
     stage('Scan') {
       steps {
-        sh 'which trivy || echo "Trivy no encontrado"'
-        sh 'trivy --version || echo "No se pudo ejecutar Trivy"'
-        sh 'trivy --quiet --exit-code 1 --severity HIGH,CRITICAL darinpope/java-web-app:latest'
+        sh 'trivy image --quiet --exit-code 1 --severity HIGH,CRITICAL darinpope/java-web-app:latest'
       }
     }
   }
