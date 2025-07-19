@@ -6,12 +6,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t darinpope/java-web-app:latest .'
+        sh 'docker build -t darinpope/trivy-java-web-app:latest .'
       }
     }
     stage('Scan') {
       steps {
-        sh 'trivy image darinpope/java-web-app:latest'
+        sh 'trivy image darinpope/trivy-java-web-app:latest'
       }
     }
   }
