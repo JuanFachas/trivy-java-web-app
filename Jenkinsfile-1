@@ -11,13 +11,8 @@ pipeline {
     }
     stage('Scan') {
       steps {
-        sh 'trivy image --format json --output resultado-1.json darinpope/trivy-java-web-app:latest'
+        sh 'trivy darinpope/trivy-java-web-app:latest'
       }
-    }
-  }
-  post {
-    always {
-      archiveArtifacts artifacts: 'resultado-1.json', fingerprint: true
     }
   }
 }
