@@ -6,7 +6,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t darinpope/trivy-java-web-app:latest .'
+        'docker build --no-cache -t darinpope/trivy-java-web-app:latest .'
       }
     }
     stage('Scan') {
