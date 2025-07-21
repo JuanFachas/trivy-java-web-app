@@ -1,0 +1,37 @@
+
+Practica Trivy
+
+Verificacion Trivy:
+"docker exec -it jenkins-Ultimate bash"
+"trivy --version"
+
+Comando para analisis en archivo JSON:
+"stage('Scan') {
+      steps {
+        sh 'trivy image --format json --output resultado-2.json darinpope/trivy-java-web-app:latest'
+      }
+    }
+  }
+  post {
+    always {
+      archiveArtifacts artifacts: 'resultado-2.json', fingerprint: true
+    }
+  }
+}"
+
+Comando para analisis en archivo TXT:
+"stage('Scan') {
+      steps {
+        sh 'trivy image --format table --output resultado.txt darinpope/trivy-java-web-app:latest'
+      }
+    }
+  }
+  post {
+    always {
+      archiveArtifacts artifacts: 'resultado.txt', fingerprint: true
+    }
+  }
+}"
+
+Escanear imagen con Trivy:
+"trivy image <nombre de imagen>"

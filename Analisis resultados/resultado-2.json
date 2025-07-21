@@ -1,0 +1,387 @@
+{
+  "SchemaVersion": 2,
+  "CreatedAt": "2025-07-21T16:22:13.800892827Z",
+  "ArtifactName": "darinpope/trivy-java-web-app:latest",
+  "ArtifactType": "container_image",
+  "Metadata": {
+    "Size": 356016640,
+    "OS": {
+      "Family": "alpine",
+      "Name": "3.21.4"
+    },
+    "ImageID": "sha256:05c2a8a9c78c1b0dadd7a390433f45d6b36755b13b46dca62e50ffe3d7ae9124",
+    "DiffIDs": [
+      "sha256:7003d23cc2176ec98ba2f8b3b4b9b5f144ef370e39bfcf6275a92b5064bc9261",
+      "sha256:1ec2e3a23bdbf1913919cfa2087728bb32e27f68b893209721aa204af248b6f9",
+      "sha256:ac180bb705c1e4e4171170d195ea835392d7b37ac57011a60f87b099b27f8e5a",
+      "sha256:abe2ffd642b303d993ea385ef05c591585feb79dcb96b3e3a709356dd0b9d036",
+      "sha256:00ef07dcf2d77c4c9b5f4bd25e9b5cb8d6bf22369560fcc118ecef0540e41e76",
+      "sha256:de58a0c34a8283b232db8ef51b9e424a0dd30f15847bc3aea034f2f5254b404c",
+      "sha256:f663f58c124e8feaa3e92ceefaa02bd0ed17c6de178960ba8a0d2f667994cc56",
+      "sha256:b4f3a0ddf320466d9729417156c93c6921274ca3e0bb99489674f0205edab761"
+    ],
+    "RepoTags": [
+      "darinpope/trivy-java-web-app:latest"
+    ],
+    "RepoDigests": [
+      "darinpope/trivy-java-web-app@sha256:05c2a8a9c78c1b0dadd7a390433f45d6b36755b13b46dca62e50ffe3d7ae9124"
+    ],
+    "ImageConfig": {
+      "architecture": "amd64",
+      "created": "2025-07-21T16:21:45.233222306Z",
+      "history": [
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "ADD alpine-minirootfs-3.21.4-x86_64.tar.gz / # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "CMD [\"/bin/sh\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "ENV JAVA_HOME=/opt/java/openjdk",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "ENV PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALL=en_US.UTF-8",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "RUN /bin/sh -c set -eux;     apk add --no-cache         fontconfig ttf-dejavu         gnupg         ca-certificates p11-kit-trust         musl-locales musl-locales-lang         binutils         tzdata         coreutils         openssl     ;     rm -rf /var/cache/apk/* # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "ENV JAVA_VERSION=jdk-17.0.15+6",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "RUN /bin/sh -c set -eux;     ARCH=\"$(apk --print-arch)\";     case \"${ARCH}\" in        x86_64)          ESUM='c596f5c627f84cd801bd7a443cd0743304a6aabb7397e0fdbfad16a9517f7f98';          BINARY_URL='https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.15%2B6/OpenJDK17U-jdk_x64_alpine-linux_hotspot_17.0.15_6.tar.gz';          ;;        *)          echo \"Unsupported arch: ${ARCH}\";          exit 1;          ;;     esac;     wget -O /tmp/openjdk.tar.gz ${BINARY_URL};     wget -O /tmp/openjdk.tar.gz.sig ${BINARY_URL}.sig;     export GNUPGHOME=\"$(mktemp -d)\";     gpg --batch --keyserver keyserver.ubuntu.com --recv-keys 3B04D753C9050D9A5D343F39843C48A565F8F04B;     gpg --batch --verify /tmp/openjdk.tar.gz.sig /tmp/openjdk.tar.gz;     rm -rf \"${GNUPGHOME}\" /tmp/openjdk.tar.gz.sig;     echo \"${ESUM} */tmp/openjdk.tar.gz\" | sha256sum -c -;     mkdir -p \"$JAVA_HOME\";     tar --extract         --file /tmp/openjdk.tar.gz         --directory \"$JAVA_HOME\"         --strip-components 1         --no-same-owner     ;     rm -f /tmp/openjdk.tar.gz ${JAVA_HOME}/lib/src.zip; # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "RUN /bin/sh -c set -eux;     echo \"Verifying install ...\";     fileEncoding=\"$(echo 'System.out.println(System.getProperty(\"file.encoding\"))' | jshell -s -)\"; [ \"$fileEncoding\" = 'UTF-8' ]; rm -rf ~/.java;     echo \"javac --version\"; javac --version;     echo \"java --version\"; java --version;     echo \"Complete.\" # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "COPY --chmod=755 entrypoint.sh /__cacert_entrypoint.sh # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "ENTRYPOINT [\"/__cacert_entrypoint.sh\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2025-04-23T14:48:05Z",
+          "created_by": "CMD [\"jshell\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2025-07-21T16:21:44Z",
+          "created_by": "VOLUME [/tmp]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2025-07-21T16:21:44Z",
+          "created_by": "ARG DEPENDENCY=/workspace/app/target/dependency",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        },
+        {
+          "created": "2025-07-21T16:21:44Z",
+          "created_by": "COPY /workspace/app/target/dependency/BOOT-INF/lib /app/lib # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2025-07-21T16:21:45Z",
+          "created_by": "COPY /workspace/app/target/dependency/META-INF /app/META-INF # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2025-07-21T16:21:45Z",
+          "created_by": "COPY /workspace/app/target/dependency/BOOT-INF/classes /app # buildkit",
+          "comment": "buildkit.dockerfile.v0"
+        },
+        {
+          "created": "2025-07-21T16:21:45Z",
+          "created_by": "ENTRYPOINT [\"java\" \"-Dserver.port=${PORT}\" \"-cp\" \"app:app/lib/*\" \"com.example.demo.DemoApplication\"]",
+          "comment": "buildkit.dockerfile.v0",
+          "empty_layer": true
+        }
+      ],
+      "os": "linux",
+      "rootfs": {
+        "type": "layers",
+        "diff_ids": [
+          "sha256:7003d23cc2176ec98ba2f8b3b4b9b5f144ef370e39bfcf6275a92b5064bc9261",
+          "sha256:1ec2e3a23bdbf1913919cfa2087728bb32e27f68b893209721aa204af248b6f9",
+          "sha256:ac180bb705c1e4e4171170d195ea835392d7b37ac57011a60f87b099b27f8e5a",
+          "sha256:abe2ffd642b303d993ea385ef05c591585feb79dcb96b3e3a709356dd0b9d036",
+          "sha256:00ef07dcf2d77c4c9b5f4bd25e9b5cb8d6bf22369560fcc118ecef0540e41e76",
+          "sha256:de58a0c34a8283b232db8ef51b9e424a0dd30f15847bc3aea034f2f5254b404c",
+          "sha256:f663f58c124e8feaa3e92ceefaa02bd0ed17c6de178960ba8a0d2f667994cc56",
+          "sha256:b4f3a0ddf320466d9729417156c93c6921274ca3e0bb99489674f0205edab761"
+        ]
+      },
+      "config": {
+        "Entrypoint": [
+          "java",
+          "-Dserver.port=${PORT}",
+          "-cp",
+          "app:app/lib/*",
+          "com.example.demo.DemoApplication"
+        ],
+        "Env": [
+          "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+          "JAVA_HOME=/opt/java/openjdk",
+          "LANG=en_US.UTF-8",
+          "LANGUAGE=en_US:en",
+          "LC_ALL=en_US.UTF-8",
+          "JAVA_VERSION=jdk-17.0.15+6"
+        ],
+        "Volumes": {
+          "/tmp": {}
+        },
+        "WorkingDir": "/"
+      }
+    },
+    "Layers": [
+      {
+        "Size": 8111104,
+        "Digest": "sha256:0368fd46e3c6d237d81390ff086f93aee216df5cfa814041a491453fb0932a12",
+        "DiffID": "sha256:7003d23cc2176ec98ba2f8b3b4b9b5f144ef370e39bfcf6275a92b5064bc9261"
+      },
+      {
+        "Size": 48118272,
+        "Digest": "sha256:17fa998c0391d6c86e898bf4b6a4327c8f0b47a29f49cde0c97ae5023ff40f2c",
+        "DiffID": "sha256:1ec2e3a23bdbf1913919cfa2087728bb32e27f68b893209721aa204af248b6f9"
+      },
+      {
+        "Size": 277427712,
+        "Digest": "sha256:060f8bc65cd6b12f4666ffb0fb232257306bb42dc02f9dacc41777e12fc7dd60",
+        "DiffID": "sha256:ac180bb705c1e4e4171170d195ea835392d7b37ac57011a60f87b099b27f8e5a"
+      },
+      {
+        "Size": 2048,
+        "Digest": "sha256:1184688a8027d32a231bb2d0d407937871af79415a690acb498e217bae544556",
+        "DiffID": "sha256:abe2ffd642b303d993ea385ef05c591585feb79dcb96b3e3a709356dd0b9d036"
+      },
+      {
+        "Size": 7168,
+        "Digest": "sha256:19ea832623018951d3d3adb72c34117c32ce3cc491a2fcadcde498604425bf61",
+        "DiffID": "sha256:00ef07dcf2d77c4c9b5f4bd25e9b5cb8d6bf22369560fcc118ecef0540e41e76"
+      },
+      {
+        "Size": 22332928,
+        "Digest": "sha256:9d8db433aa40dd21d3d46c1a4b9f9e45aeeb485edd51fe7a8d77001ef839c2d5",
+        "DiffID": "sha256:de58a0c34a8283b232db8ef51b9e424a0dd30f15847bc3aea034f2f5254b404c"
+      },
+      {
+        "Size": 11776,
+        "Digest": "sha256:7a25a16e144ca08da0a5e9278544394acf7fa920f87254d6c160e9cc57f09319",
+        "DiffID": "sha256:f663f58c124e8feaa3e92ceefaa02bd0ed17c6de178960ba8a0d2f667994cc56"
+      },
+      {
+        "Size": 5632,
+        "Digest": "sha256:5628368139725a511538fd31e672d05d19e666838568d957b3df9540d9400fab",
+        "DiffID": "sha256:b4f3a0ddf320466d9729417156c93c6921274ca3e0bb99489674f0205edab761"
+      }
+    ]
+  },
+  "Results": [
+    {
+      "Target": "darinpope/trivy-java-web-app:latest (alpine 3.21.4)",
+      "Class": "os-pkgs",
+      "Type": "alpine"
+    },
+    {
+      "Target": "Java",
+      "Class": "lang-pkgs",
+      "Type": "jar",
+      "Vulnerabilities": [
+        {
+          "VulnerabilityID": "CVE-2025-22235",
+          "PkgName": "org.springframework.boot:spring-boot",
+          "PkgPath": "app/lib/spring-boot-3.2.11.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.springframework.boot/spring-boot@3.2.11",
+            "UID": "c0c67169cc91817a"
+          },
+          "InstalledVersion": "3.2.11",
+          "FixedVersion": "3.3.11, 3.4.5",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:9d8db433aa40dd21d3d46c1a4b9f9e45aeeb485edd51fe7a8d77001ef839c2d5",
+            "DiffID": "sha256:de58a0c34a8283b232db8ef51b9e424a0dd30f15847bc3aea034f2f5254b404c"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-22235",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "org.springframework.boot/spring-boot: Spring Boot EndpointRequest.to() creates wrong matcher if actuator endpoint is not exposed",
+          "Description": "EndpointRequest.to() creates a matcher for null/** if the actuator endpoint, for which the EndpointRequest has been created, is disabled or not exposed.\n\nYour application may be affected by this if all the following conditions are met:\n\n  *  You use Spring Security\n  *  EndpointRequest.to() has been used in a Spring Security chain configuration\n  *  The endpoint which EndpointRequest references is disabled or not exposed via web\n  *  Your application handles requests to /null and this path needs protection\n\n\nYou are not affected if any of the following is true:\n\n  *  You don't use Spring Security\n  *  You don't use EndpointRequest.to()\n  *  The endpoint which EndpointRequest.to() refers to is enabled and is exposed\n  *  Your application does not handle requests to /null or this path does not need protection",
+          "Severity": "HIGH",
+          "CweIDs": [
+            "CWE-20"
+          ],
+          "VendorSeverity": {
+            "ghsa": 3,
+            "redhat": 3
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+              "V3Score": 7.3
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:L/A:L",
+              "V3Score": 7.3
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-22235",
+            "https://github.com/advisories/GHSA-rc42-6c7j-7h5r",
+            "https://github.com/spring-projects/spring-boot",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-22235",
+            "https://security.netapp.com/advisory/ntap-20250516-0010",
+            "https://security.netapp.com/advisory/ntap-20250516-0010/",
+            "https://spring.io/security/cve-2025-22235",
+            "https://www.cve.org/CVERecord?id=CVE-2025-22235"
+          ],
+          "PublishedDate": "2025-04-28T08:15:15.273Z",
+          "LastModifiedDate": "2025-05-16T23:15:19.6Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-22233",
+          "PkgName": "org.springframework:spring-context",
+          "PkgPath": "app/lib/spring-context-6.1.14.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.springframework/spring-context@6.1.14",
+            "UID": "58e75ec9d1c7161"
+          },
+          "InstalledVersion": "6.1.14",
+          "FixedVersion": "6.2.7, 6.1.20",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:9d8db433aa40dd21d3d46c1a4b9f9e45aeeb485edd51fe7a8d77001ef839c2d5",
+            "DiffID": "sha256:de58a0c34a8283b232db8ef51b9e424a0dd30f15847bc3aea034f2f5254b404c"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-22233",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "CVE-2024-38820 ensured Locale-independent, lowercase conversion for bo ...",
+          "Description": "CVE-2024-38820 ensured Locale-independent, lowercase conversion for both the configured disallowedFields patterns and for request parameter names. However, there are still cases where it is possible to bypass the disallowedFields checks.\n\nAffected Spring Products and Versions\n\nSpring Framework:\n  *  6.2.0 - 6.2.6\n\n  *  6.1.0 - 6.1.19\n\n  *  6.0.0 - 6.0.27\n\n  *  5.3.0 - 5.3.42\n  *  Older, unsupported versions are also affected\n\n\n\nMitigation\n\nUsers of affected versions should upgrade to the corresponding fixed version.\n\nAffected version(s)Fix Version Availability 6.2.x\n 6.2.7\nOSS6.1.x\n 6.1.20\nOSS6.0.x\n 6.0.28\n Commercial https://enterprise.spring.io/ 5.3.x\n 5.3.43\n Commercial https://enterprise.spring.io/ \nNo further mitigation steps are necessary.\n\n\nGenerally, we recommend using a dedicated model object with properties only for data binding, or using constructor binding since constructor arguments explicitly declare what to bind together with turning off setter binding through the declarativeBinding flag. See the Model Design section in the reference documentation.\n\nFor setting binding, prefer the use of allowedFields (an explicit list) over disallowedFields.\n\nCredit\n\nThis issue was responsibly reported by the TERASOLUNA Framework Development Team from NTT DATA Group Corporation.",
+          "Severity": "LOW",
+          "CweIDs": [
+            "CWE-20"
+          ],
+          "VendorSeverity": {
+            "ghsa": 1
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N",
+              "V3Score": 3.1
+            }
+          },
+          "References": [
+            "https://github.com/spring-projects/spring-framework",
+            "https://github.com/spring-projects/spring-framework/commit/edfcc6ffb188e4614ec9b212e3208b666981851c",
+            "https://github.com/spring-projects/spring-framework/commit/ee62701f5634e904e42e218baad142cea2bcd332",
+            "https://github.com/spring-projects/spring-framework/issues/34801",
+            "https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N\u0026version=3.1",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-22233",
+            "https://spring.io/security/cve-2025-22233"
+          ],
+          "PublishedDate": "2025-05-16T20:15:22.143Z",
+          "LastModifiedDate": "2025-05-19T13:35:20.46Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2025-41234",
+          "PkgName": "org.springframework:spring-web",
+          "PkgPath": "app/lib/spring-web-6.1.14.jar",
+          "PkgIdentifier": {
+            "PURL": "pkg:maven/org.springframework/spring-web@6.1.14",
+            "UID": "fb59e6b799082c2e"
+          },
+          "InstalledVersion": "6.1.14",
+          "FixedVersion": "6.2.8, 6.1.21",
+          "Status": "fixed",
+          "Layer": {
+            "Digest": "sha256:9d8db433aa40dd21d3d46c1a4b9f9e45aeeb485edd51fe7a8d77001ef839c2d5",
+            "DiffID": "sha256:de58a0c34a8283b232db8ef51b9e424a0dd30f15847bc3aea034f2f5254b404c"
+          },
+          "SeveritySource": "ghsa",
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-41234",
+          "DataSource": {
+            "ID": "ghsa",
+            "Name": "GitHub Security Advisory Maven",
+            "URL": "https://github.com/advisories?query=type%3Areviewed+ecosystem%3Amaven"
+          },
+          "Title": "springframework: Reflected download attack in Spring Framework with non-ASCII headers",
+          "Description": "Description\n\nIn Spring Framework, versions 6.0.x as of 6.0.5, versions 6.1.x and 6.2.x, an application is vulnerable to a reflected file download (RFD) attack when it sets a “Content-Disposition” header with a non-ASCII charset, where the filename attribute is derived from user-supplied input.\n\nSpecifically, an application is vulnerable when all the following are true:\n\n  *  The header is prepared with org.springframework.http.ContentDisposition.\n  *  The filename is set via ContentDisposition.Builder#filename(String, Charset).\n  *  The value for the filename is derived from user-supplied input.\n  *  The application does not sanitize the user-supplied input.\n  *  The downloaded content of the response is injected with malicious commands by the attacker (see RFD paper reference for details).\n\n\nAn application is not vulnerable if any of the following is true:\n\n  *  The application does not set a “Content-Disposition” response header.\n  *  The header is not prepared with org.springframework.http.ContentDisposition.\n  *  The filename is set via one of:  *  ContentDisposition.Builder#filename(String), or\n  *  ContentDisposition.Builder#filename(String, ASCII)\n\n\n\n  *  The filename is not derived from user-supplied input.\n  *  The filename is derived from user-supplied input but sanitized by the application.\n  *  The attacker cannot inject malicious content in the downloaded content of the response.\n\n\nAffected Spring Products and VersionsSpring Framework:\n\n  *  6.2.0 - 6.2.7\n  *  6.1.0 - 6.1.20\n  *  6.0.5 - 6.0.28\n  *  Older, unsupported versions are not affected\n\n\nMitigationUsers of affected versions should upgrade to the corresponding fixed version.\n\nAffected version(s)Fix versionAvailability6.2.x6.2.8OSS6.1.x6.1.21OSS6.0.x6.0.29 Commercial https://enterprise.spring.io/ No further mitigation steps are necessary.\n\n\nCWE-113 in `Content-Disposition` handling in VMware Spring Framework versions 6.0.5 to 6.2.7 allows remote attackers to launch Reflected File Download (RFD) attacks via unsanitized user input in `ContentDisposition.Builder#filename(String, Charset)` with non-ASCII charsets.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-113"
+          ],
+          "VendorSeverity": {
+            "ghsa": 2,
+            "redhat": 2
+          },
+          "CVSS": {
+            "ghsa": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:L/A:N",
+              "V3Score": 6.5
+            },
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:L/A:N",
+              "V3Score": 6.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2025-41234",
+            "https://github.com/spring-projects/spring-framework",
+            "https://github.com/spring-projects/spring-framework/commit/f0e7b42704e6b33958f242d91bd690d6ef7ada9c",
+            "https://github.com/spring-projects/spring-framework/commit/fd68ea6fcbf94fc1d38bfefd3692fe094652ab3d",
+            "https://github.com/spring-projects/spring-framework/issues/35034",
+            "https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator?vector=AV:N/AC:H/PR:L/UI:R/S:C/C:H/I:L/A:N\u0026version=3.1",
+            "https://nvd.nist.gov/vuln/detail/CVE-2025-41234",
+            "https://spring.io/security/cve-2025-41234",
+            "https://www.cve.org/CVERecord?id=CVE-2025-41234"
+          ],
+          "PublishedDate": "2025-06-12T22:15:21.09Z",
+          "LastModifiedDate": "2025-06-16T12:32:18.84Z"
+        }
+      ]
+    }
+  ]
+}
