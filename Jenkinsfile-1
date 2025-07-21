@@ -14,10 +14,10 @@ pipeline {
         sh 'trivy image --format json --output resultado-2.json darinpope/trivy-java-web-app:latest'
       }
     }
-    post {
-      always {
-        archiveArtifacts artifacts: 'resultado-2.json', fingerprint: true
-      }
+  }
+  post {
+    always {
+      archiveArtifacts artifacts: 'resultado-2.json', fingerprint: true
     }
   }
 }
