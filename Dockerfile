@@ -11,9 +11,9 @@ RUN ./mvnw clean install -DskipTests
 RUN mkdir -p target/dependency && (cd target/dependency; jar -xf ../*.jar)
 
 # Etapa 2: Escaneo (opcional, descomentarlo si se necesita)
-#FROM build AS vulnscan
-#COPY --from=aquasec/trivy:latest /usr/local/bin/trivy /usr/local/bin/trivy
-#RUN trivy rootfs --no-progress / || true
+FROM build AS vulnscan
+COPY --from=aquasec/trivy:latest /usr/local/bin/trivy /usr/local/bin/trivy
+RUN trivy rootfs --no-progress / || true
 
 # Etapa 3: Imagen final con solo lo necesario para ejecutar
 FROM eclipse-temurin:17-jdk-alpine
